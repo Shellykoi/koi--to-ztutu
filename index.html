@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>此系水湲送给木旦土土的课表</title>
+    <style>
+
+        /*.left-panel {
+            position: fixed;
+            left: 3%;
+            top: 66px;
+            width: 25%;
+            max-width: 400px;
+            padding: 20px;
+            background: #fbfaee;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }*/
+        .left-panel {
+            flex:1;
+            width:15%;
+            max-width: 300px;
+            padding: 20px;
+            /*background: #fbfaee;*/
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky; /* 添加粘性定位 */
+            top: 65px;       /* 距离顶部间距 */
+            height: fit-content;
+            background: rgba(251, 250, 238, 0.8); /* 更透明的效果 */
+
+             /* 增强毛玻璃效果 */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+        /* 修改body布局 */
+      /*  body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfc;
+            min-height: 100vh;
+        }
+*/
+        /* 调整原容器位置 */
+
+        .message-box {
+            margin-bottom: 30px;
+        }
+
+        .message-box img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .message-text {
+            color: #73685b;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 15px;
+            background: #fffffd;
+            border-radius: 6px;
+        }
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-y: auto; /* 允许整体滚动 */
+            /*flex-direction: column;
+            align-items: center;*/
+            min-height: 100vh;
+            background-color: #fdfdfc;
+
+            background-image: url('背景3.jpg'); /* 背景图片路径 */
+            background-size: cover;        /* 覆盖整个视口 */
+            background-position: center;   /* 居中显示 */
+            background-attachment: fixed;  /* 固定背景不滚动 */
+            background-repeat: no-repeat;  /* 禁止重复 */
+
+
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            padding: 20px;
+            /*gap: 15px;*/ /* 左右容器间距 */
+        }
+
+
+        .container {
+            flex:1;
+            width: 60%;
+            max-width: 1200px;
+            /*margin: 20px;*/
+            /*height:80%;*/
+            /*background: #fbfaee;*/
+            background: rgba(251, 250, 238, 0.85); /* 转换为RGBA并添加透明度 */
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            position: relative;
+            margin-top: 7px; /* 与左侧面板对齐 */
+            left: 1%;   /* 距左侧距离 */
+            right: 10%;  /* 距右侧距离 */
+            /*bottom: 20px;*/
+            height: auto;
+
+            /* 新增毛玻璃效果 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Safari 兼容 */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 添加光泽边框 */
+
+
+        }
+        /*.container {
+            position: relative;
+            left: 28%; !* 与左侧面板保持3%间距 *!
+            width: 65%;
+            max-width: 1200px;
+            margin: 50px 0;
+            background: #fbfaee;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        */
+
+        .header-container {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: normal;
+            color: #73685b;
+            margin: 0;
+        }
+        .week-select {
+            padding: 5px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border: 1px solid #feffff;
+            font-size: 12px;
+            background: white;
+        }
+        .timetable {
+            display: flex;
+            margin-top: 10px;
+        }
+        .time-column {
+            display: flex;
+            flex-direction: column;
+            width: 80px;
+            background: #fdfae8;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        /*窄长时间块的背景颜色*/
+        .week-block {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fffffd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #73685b;
+        }
+        .time-block {
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .date-row {
+            display: flex;
+            flex-grow: 1;
+            margin-left: 10px;
+            position: relative;
+        }
+        .date-column {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px;
+            position: relative;
+        }
+        .date-header {
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fffffd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #73685b;
+        }
+        .course-block {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #333;
+            font-size: 13px;
+            padding: 8px;
+            line-height: 1.4;
+            word-break: break-all;
+            overflow: hidden;
+            text-align: center;
+            width: calc(100% - 20px);
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .course-block:hover::after {
+            content: attr(data-info);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container"> <!-- 新增的父容器 -->
+<!-- 新增左侧内容区 -->
+    <div class="left-panel">
+        <div class="message-box">
+            <img src="木旦土土合照3.png" alt="特别寄语">
+            <!--<img src="背景1.jpg" alt="特别寄语">-->
+            <img src="合照拼拼~.jpg" alt="特别寄语">
+            <img src="背景3.jpg" alt="特别寄语">
+
+
+            <!--<img src="此系水合照2.png" alt="特别寄语">
+            <img src="木旦土土和此系水湲合照1.png" alt="特别寄语">-->
+
+
+            <div class="message-text">
+                <p>To~木旦土土</p>
+                <p> 嘻嘻嘻你怎么有刘紫湲这么好的朋友！！！<br>
+                    还给你做了专属的课表啊啊啊好羡慕🥺☁️<br>
+                    没什么就素~(/∇＼*)<br>
+                    希望你这学期每天打开课表都能感叹一句！<br>
+                    刘紫湲真是善良可爱又厉害！😊
+                </p>
+                <!--<ul>
+                    <li>📚 学有所成</li>
+                    <li>☀️ 保持热爱</li>
+                    <li>🎯 达成目标</li>
+                </ul>-->
+                <p> 查佳欣你看到了吗！  by~koiii锦鲤湲✌️
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header-container">
+            <h1>此系水湲送给木旦土土的课表</h1>
+            <select class="week-select" onchange="updateSchedule()">
+                <option value="1">第1周</option>
+                <option value="2">第2周</option>
+                <option value="3">第3周</option>
+                <option value="4">第4周</option>
+                <option value="5">第5周</option>
+                <option value="6">第6周</option>
+                <option value="7">第7周</option>
+                <option value="8">第8周</option>
+                <option value="9">第9周</option>
+                <option value="10">第10周</option>
+                <option value="11">第11周</option>
+                <option value="12">第12周</option>
+                <option value="13">第13周</option>
+                <option value="14">第14周</option>
+                <option value="15">第15周</option>
+                <option value="16">第16周</option>
+            </select>
+        </div>
+        <div class="timetable">
+            <div class="time-column">
+                <div class="week-block">时间</div>
+                <div class="time-block">1<br>08:00-08:45</div>
+                <div class="time-block">2<br>08:50-09:35</div>
+                <div class="time-block">3<br>09:55-10:40</div>
+                <div class="time-block">4<br>10:45-11:30</div>
+                <div class="time-block">5<br>11:35-12:20</div>
+                <div class="time-block">6<br>14:00-14:45</div>
+                <div class="time-block">7<br>14:50-15:35</div>
+                <div class="time-block">8<br>15:40-16:25</div>
+                <div class="time-block">9<br>16:45-17:30</div>
+                <div class="time-block">10<br>17:35-18:20</div>
+                <div class="time-block">11<br>19:00-19:45</div>
+                <div class="time-block">12<br>19:50-20:35</div>
+                <div class="time-block">13<br>20:35-21:20</div>
+            </div>
+            <div class="date-row"></div>
+        </div>
+    </div>
+</div>
+    <script>
+        const scheduleData = {
+            "星期一": [
+                { name: "中级财务会计B2-02", weeks: "1-14周", time: "3-5节", location: "南湖南-博学西楼-413", teacher: "惠丽丽" }
+            ],
+            "星期二": [
+                { name: "管理信息系统B-01", weeks: "1-16周", time: "1-2节", location: "南湖南-博学西楼-209", teacher: "王新" },
+                { name: "中级财务管理A-02", weeks: "1-14周", time: "3-5节", location: "南湖南-博学东楼-408", teacher: "王湛,晏文胜" }
+            ],
+            "星期三": [
+                { name: "初级气排球-11", weeks: "1-16周", time: "1-2节", location: "南湖南-南湖球馆-气排球场1", teacher: "张伟" },
+                { name: "英语国家概况-23", weeks: "1-16周", time: "3-4节", location: "南湖南-博学北楼-309", teacher: "周静" },
+                { name: "管理心理与行为B-03", weeks: "1-14周", time: "6-8节", location: "南湖南-博学西楼-202", teacher: "朱新艳" },
+                { name: "汽车及运载装备关键构建无损检测技术(JD)01", weeks: "1-8周", time: "11-12节", location: "南湖南-博学西楼-104", teacher: "魏文婷,汪小凯" }
+            ],
+            "星期四": [
+                { name: "新时代中国特色社会主义思想概论-01", weeks: "1-12周", time: "3-5节", location: "南湖南-博学东楼-308", teacher: "袁博" },
+                { name: "形势与政策-71", weeks: "11-13周", time: "6-7节", location: "南湖南-博学东楼-205", teacher: "" }
+            ],
+            "星期五": [
+                { name: "管理统计学D-03", weeks: "1-14周", time: "3-5节", location: "南湖南-博学东楼-309", teacher: "王红军" },
+                { name: "马克思主义基本原理-26", weeks: "1-14周", time: "6-8节", location: "南湖南-博学东楼-403", teacher: "余佳" }
+            ]
+        };
+
+        const colors = ['#f9f4e5', '#f5f1de', '#f6efdb', '#f4ede1'];
+
+        function calculatePosition(start, duration) {
+            const timeBlockHeight = 80;
+            const margin = 10;
+            const top = (start - 1) * (timeBlockHeight + margin) + 64; // 50为头部高度
+            const height = duration * timeBlockHeight + (duration - 1) * margin;
+            return { top, height };
+        }
+
+        function updateSchedule() {
+            const selectedWeek = parseInt(document.querySelector('.week-select').value);
+            const dateRow = document.querySelector('.date-row');
+            dateRow.innerHTML = '';
+
+            Object.entries(scheduleData).forEach(([day, courses]) => {
+                const dateColumn = document.createElement('div');
+                dateColumn.className = 'date-column';
+                const dateHeader = document.createElement('div');
+                dateHeader.className = 'date-header';
+                dateHeader.innerText = day;
+                dateColumn.appendChild(dateHeader);
+
+                courses.forEach(course => {
+                    const [start, end] = course.time.split('-').map(t => parseInt(t.replace('节', '')));
+                    const duration = end - start + 1;
+                    const [startWeek, endWeek] = course.weeks.split('-').map(w => parseInt(w.replace('周', '')));
+
+                    if (selectedWeek >= startWeek && selectedWeek <= endWeek) {
+                        const pos = calculatePosition(start, duration);
+                        const courseBlock = document.createElement('div');
+                        courseBlock.className = 'course-block';
+                        courseBlock.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        courseBlock.style.top = `${pos.top}px`;
+                        courseBlock.style.height = `${pos.height}px`;
+                        courseBlock.innerHTML = `${course.name}<br>${course.location}`;
+                        courseBlock.setAttribute('data-info', `周次: ${course.weeks}<br>教师: ${course.teacher}`);
+                        dateColumn.appendChild(courseBlock);
+                    }
+                });
+
+                dateRow.appendChild(dateColumn);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSchedule();
+        });
+    </script>
+</body>
+</html>
